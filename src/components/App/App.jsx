@@ -6,10 +6,8 @@ import ContactsList from '../ContactsList/ContactsList';
 import Filter from '../Filter/Filter';
 import css from './App.module.css';
 
-
 const App = () => {
   const contacts = useSelector((state) => state.contacts);
-  const filter = useSelector((state) => state.filter);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,10 +23,10 @@ const App = () => {
 
   return (
     <div className={css.container}>
-      <h1 className={css.title}>Phonebook</h1>
+      <h1 className={css.title}>Телефонная книга</h1>
       <ContactForm />
 
-      <h2 className={css.title}>Contacts</h2>
+      <h2 className={css.title}>Контакты</h2>
       <Filter />
       <ContactsList />
     </div>
