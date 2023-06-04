@@ -1,19 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
-import App from '../src/components/App/App.jsx';
-import contactsReducer from '../src/components/redux/contactsSlice.js';
-
-const store = configureStore({
-  reducer: {
-    contacts: contactsReducer,
-  },
-});
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './components/redux/store/store';
+import App from './components/App/App';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <PersistGate persistor={persistor} loading={null}>
+      <App />
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );

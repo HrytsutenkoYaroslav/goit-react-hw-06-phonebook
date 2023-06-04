@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../redux/contactsSlice';
+import { removeContact } from '../redux/contactsSlice';
 import css from './ContactsList.module.css';
 import PropTypes from 'prop-types';
 
@@ -9,7 +9,7 @@ const ContactsList = () => {
   const dispatch = useDispatch();
 
   const handleDelete = (contactId) => {
-    dispatch(deleteContact(contactId));
+    dispatch(removeContact(contactId));
   };
 
   return (
