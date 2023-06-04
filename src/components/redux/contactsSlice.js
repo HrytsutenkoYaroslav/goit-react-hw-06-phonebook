@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
+import { v4 as uuidv4 } from 'uuid'; // Импорт функции для генерации уникального идентификатора
 
 const persistConfig = {
   key: 'contacts',
@@ -21,7 +21,11 @@ const contactsSlice = createSlice({
       state.contacts = action.payload;
     },
     addContact: (state, action) => {
-      state.contacts.push(action.payload);
+      const newContact = {
+        ...action.payload,
+        id: uuidv4(), // Генерация уникального идентификатора
+      };
+      state.contacts.push(newContact);
     },
     removeContact: (state, action) => {
       const contactId = action.payload;
